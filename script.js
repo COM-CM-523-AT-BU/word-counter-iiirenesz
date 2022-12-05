@@ -1,20 +1,33 @@
 // put your globals here - hint: select elements from the HTML
-
+const countBtn = document.querySelector("#countBtn");
+const textInputCount = document.querySelector("#wordCountInput");
+const findBtn = document.querySelector("#findBtn");
+const findWordInput = document.querySelector("#findWordInput");
+const wordFoundInput = document.querySelector("#wordFoundInput");
 
 // dont' forget to add event listeners to teh buttons
+countBtn.addEventListener("click", countWords);
+findBtn.addEventListener("click", findWords);
 
 function countWords() {
-  // your code here
-  // call printData
+  let str = textInputCount.value;
+  const words = str.split(' ');
+  const count = words.length;
+  printData (count, textInputCount);
 }
 
 function findWords() {
-  // put your local variable for the empty array here
-  // remainder of your code follows
-  // call printData
+  let textInputCount = [];
+  let str = document.getElementById("text-area").value;
+  const words = str.split(' ');
+  words.forEach( (item) => {
+    if(item === findWordInput.value){
+      textInputCount.push(item);
+    }
+  });
+  printData(textInputCount.length, wordFoundInput);
 }
 
-// change param1 and param2 to identifiers that make sense
-function printData(param1, param2) {
-  // your code here... one line!
+function printData(data, destination) {
+  destination.value = data;
 }
